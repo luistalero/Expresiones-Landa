@@ -1,11 +1,22 @@
 package com.expresionlanda;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        List<String> lista = Arrays.asList("uno", "dos", "tres");
-        lista.forEach(s -> System.out.println(s));
+        List<Persona> personas = new ArrayList<>();
+        personas.add(new Persona("carlos", 25));
+        personas.add(new Persona("Ana", 23));
+        personas.add(new Persona("Jose", 30));
+        personas.add(new Persona("Maria", 20));
+
+        Comparator<Persona> porEdad = (p1, p2) -> Integer.compare(p1.getEdad(), p2.getEdad());
+
+        Collections.sort(personas, porEdad);
+
+        personas.forEach(System.out::println);
     }
 }
